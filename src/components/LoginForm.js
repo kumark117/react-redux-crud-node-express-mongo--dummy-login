@@ -13,22 +13,24 @@ const LoginForm = ({
 }) => (
     <form action="/" onSubmit={onSubmit}>
 
-      {errors.summary && <p>{errors.summary}</p>}
+      {errors && errors.summary && <p>{errors.summary}</p>}
 
       <Card>
 	<label>Email:</label>
         <input
           name="email"
+	  id="email"
           onChange={onChange}
-          value={user.email}
+          value={user && user.email}
         />
       </Card>
       <Card>
 	<label>Password:</label>
         <input
-          name="userInfo"
+          name="password"
+	  id="password"
           onChange={onChange}
-          value={user.email}
+          value={user && user.password}
         />
       </Card>
 

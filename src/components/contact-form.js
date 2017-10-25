@@ -33,20 +33,20 @@ const validate = (values) => {
 
 class ContactForm extends Component {
 
-  componentWillReceiveProps = (nextProps) => { // Load Contact Asynchronously
+  componentWillReceiveProps(nextProps) { // Load Contact Asynchronously
     const { contact } = nextProps;
     if(contact._id !== this.props.contact._id) { // Initialize form only once
       this.props.initialize(contact)
     }
   }
 
-  renderField = ({ input, label, type, meta: { touched, error } }) => (
+  renderField({ input, label, type, meta: { touched, error } }) { return (
     <Form.Field className={classnames({error:touched && error})}>
       <label>{label}</label>
       <input {...input} placeholder={label} type={type}/>
       {touched && error && <span className="error">{error.message}</span>}
     </Form.Field>
-  )
+  )}
 
   render() {
     const { handleSubmit, pristine, submitting, loading, contact } = this.props;
@@ -56,11 +56,11 @@ class ContactForm extends Component {
           <h1 style={{marginTop:"1em"}}>{contact._id ? 'Edit Contact' : 'Add New Contact'}</h1>
           <Form onSubmit={handleSubmit} loading={loading}>
             <Form.Group widths='equal'>
-              <Field name="name.first" type="text" component={this.renderField} label="First Name"/>
-              <Field name="name.last" type="text" component={this.renderField} label="Last Name"/>
+              <Field name="name.first" type="text" component={this.renderField.bind(this)} label="First Name"/>
+              <Field name="name.last" type="text" component={this.renderField.bind(this)} label="Last Name"/>
             </Form.Group>
-            <Field name="phone" type="text" component={this.renderField} label="Phone"/>
-            <Field name="email" type="text" component={this.renderField} label="Email"/>
+            <Field name="phone" type="text" component={this.renderField.bind(this)} label="Phone"/>
+            <Field name="email" type="text" component={this.renderField.bind(this)} label="Email"/>
             <Button primary type='submit' disabled={pristine || submitting}>Save</Button>
           </Form>
         </Grid.Column>

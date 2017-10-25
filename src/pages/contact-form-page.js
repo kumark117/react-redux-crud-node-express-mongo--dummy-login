@@ -9,11 +9,14 @@ import { NavLink } from 'react-router-dom';
 
 class ContactFormPage extends Component {
 
-  state = {
+constructor(props) {
+  super(props);
+  this.state = {
     redirect: false
   }
+}
 
-  componentDidMount = () => {
+  componentDidMount() {
     const { _id } = this.props.match.params;
     if(_id){
       this.props.fetchContact(_id)
@@ -22,7 +25,7 @@ class ContactFormPage extends Component {
     }
   }
 
-  submit = (contact) => {
+  submit(contact) {
     if(!contact._id) {
       return this.props.saveContact(contact)
         .then(response => this.setState({ redirect:true }))
@@ -48,7 +51,7 @@ class ContactFormPage extends Component {
         {
           this.state.redirect ?
           <Redirect to="/contacts/list" /> :
-          <ContactForm contact={this.props.contact} loading={this.props.loading} onSubmit={this.submit} />
+          <ContactForm contact={this.props.contact} loading={this.props.loading} onSubmit={this.submit.bind(this)} />
         }
       </div>
     )

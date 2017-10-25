@@ -60,14 +60,18 @@ class LoginPage extends React.Component {
    */
   render() {
     return (
-	<div>{this.state.processedForm ? <Redirect to="/contacts/list" /> :
+	<div>{
+		this.state.processedForm ? <Redirect to="/contacts/list" /> :
+      <div>
+	<h2>Login Screen</h2>
       <LoginForm
         onSubmit={this.processForm}
         onChange={this.changeUser}
         errors={this.state.errors}
         user={this.state.user}
-      />}
+      />
 	</div>
+	}</div>
     );
   }
 
