@@ -2,7 +2,7 @@ import React, { Component} from 'react';
 import { connect } from 'react-redux';
 import ContactList from '../components/contact-list';
 import { fetchContacts, deleteContact } from '../actions/contact-actions';
-import { NavLink, Route } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 class ContactListPage extends Component {
 
