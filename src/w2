@@ -1,0 +1,4 @@
+        <div className="ui two item menu">
+          <NavLink className="item" activeClassName="active" exact to="/contacts/list">Contacts List</NavLink>
+          <NavLink className="item" activeClassName="active" exact to="/contacts/new">Add Contact</NavLink>
+        </div>
